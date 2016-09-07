@@ -33,8 +33,7 @@ test(t => {
 
   const errors = runEslint(`'use strict'\nvar foo = function () {};\nfoo();\n`, conf);
 
-  t.is(errors[0].ruleId, 'no-global-tests');
-  t.is(errors[1].ruleId, 'semi');
-  t.is(errors[2].ruleId, 'no-var');
-  t.is(errors[3].ruleId, 'space-before-function-paren');
+  t.is(errors[0].ruleId, 'semi');
+  t.is(errors[1].ruleId, 'no-var');
+  t.is(errors[2].ruleId, 'space-before-function-paren');
 });

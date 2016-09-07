@@ -1,128 +1,301 @@
 'use strict';
 
 module.exports = {
-
-  extends: 'google',
-
+  parserOptions: {
+    ecmaVersion: 2016,
+    sourceType: 'module',
+    ecmaFeatures: {
+      jsx: true,
+      experimentalObjectRestSpread: true
+    }
+  },
   env: {
-    es6: true,
     node: true,
+    es6: true,
     mocha: true
   },
-
-  plugins: [
-    'promise',
-    'mocha'
-  ],
-
+  plugins: ['promise', 'mocha'],
   rules: {
-    // camelcase properties conflict with elasticsearch
-    // set in the Google rules, disable
-    'camelcase': ['error', {properties: 'never'}],
+    'comma-dangle': ['error', 'never'],
+    'no-cond-assign': 'error',
+    'no-constant-condition': 'error',
+    'no-control-regex': 'error',
+    'no-debugger': 'error',
+    'no-dupe-args': 'error',
+    'no-dupe-keys': 'error',
+    'no-duplicate-case': 'error',
+    'no-empty-character-class': 'error',
+    'no-empty': ['error', {
+      allowEmptyCatch: true
+    }],
+    'no-ex-assign': 'error',
+    'no-extra-boolean-cast': 'error',
+    'no-extra-semi': 'error',
+    'no-func-assign': 'error',
+    'no-inner-declarations': 'error',
+    'no-invalid-regexp': 'error',
+    'no-irregular-whitespace': 'error',
+    'no-obj-calls': 'error',
+    'no-prototype-builtins': 'error',
+    'no-regex-spaces': 'error',
+    'no-sparse-arrays': 'error',
+    'no-template-curly-in-string': 'error',
+    'no-unreachable': 'error',
+    'no-unsafe-finally': 'error',
+    'no-unsafe-negation': 'error',
+    'use-isnan': 'error',
+    'valid-typeof': ['error', {
+      requireStringLiterals: true
+    }],
+    'no-unexpected-multiline': 'error',
+    'accessor-pairs': 'error',
+    'array-callback-return': 'error',
+    'block-scoped-var': 'error',
+    'complexity': 'warn',
+    'curly': 'error',
+    'default-case': 'error',
+    'dot-notation': 'error',
+    'dot-location': ['error', 'property'],
+    'eqeqeq': 'error',
+    'guard-for-in': 'error',
+    'no-alert': 'error',
+    'no-caller': 'error',
+    'no-case-declarations': 'error',
+    'no-div-regex': 'error',
+    'no-else-return': 'error',
+    'no-empty-pattern': 'error',
+    'no-eq-null': 'error',
+    'no-eval': 'error',
+    'no-extend-native': 'error',
+    'no-extra-bind': 'error',
+    'no-extra-label': 'error',
+    'no-fallthrough': 'error',
+    'no-floating-decimal': 'error',
+    'no-global-assign': 'error',
+    'no-implicit-coercion': 'error',
+    'no-implicit-globals': 'error',
+    'no-implied-eval': 'error',
+    'no-iterator': 'error',
+    'no-labels': 'error',
+    'no-lone-blocks': 'error',
+    'no-loop-func': 'error',
+    'no-multi-spaces': 'error',
+    'no-multi-str': 'error',
+    'no-new-func': 'error',
+    'no-new-wrappers': 'error',
+    'no-new': 'error',
+    'no-octal-escape': 'error',
+    'no-octal': 'error',
+    'no-proto': 'error',
+    'no-redeclare': 'error',
+    'no-return-assign': ['error', 'always'],
+    'no-script-url': 'error',
+    'no-self-assign': ['error', {
+      props: true
+    }],
+    'no-self-compare': 'error',
+    'no-sequences': 'error',
+    'no-throw-literal': 'error',
+    'no-unmodified-loop-condition': 'error',
+    'no-unused-expressions': 'error',
+    'no-unused-labels': 'error',
+    'no-useless-call': 'error',
+    'no-useless-concat': 'error',
+    'no-useless-escape': 'error',
+    'no-void': 'error',
+    'no-warning-comments': 'warn',
+    'no-with': 'error',
+    'radix': 'error',
+    'wrap-iife': ['error', 'inside'],
+    'yoda': 'error',
+    'no-delete-var': 'error',
+    'no-label-var': 'error',
+    'no-restricted-globals': ['error', 'event'],
+    'no-shadow-restricted-names': 'error',
+    'no-undef-init': 'error',
+    'no-undef': ['error', {
+      typeof: true
+    }],
+    'no-unused-vars': 'error',
+    'no-use-before-define': ['error', 'nofunc'],
 
-    // promise rules
-    // Enforce standard parameter names for Promise constructors
+    'handle-callback-err': 'warn',
+    'no-mixed-requires': ['error', {
+      grouping: true,
+      allowCall: true
+    }],
+    'no-new-require': 'error',
+    'no-path-concat': 'error',
+    'no-restricted-imports': ['error',
+      'domain',
+      'freelist',
+      'smalloc',
+      'sys',
+      'colors'
+    ],
+    'no-restricted-modules': ['error',
+      'domain',
+      'freelist',
+      'smalloc',
+      'sys',
+      'colors'
+    ],
+    'array-bracket-spacing': ['error', 'never'],
+    'brace-style': ['error', '1tbs', {
+      allowSingleLine: false
+    }],
+    'comma-spacing': ['error', {
+      before: false,
+      after: true
+    }],
+    'comma-style': ['error', 'last'],
+    'computed-property-spacing': ['error', 'never'],
+    'eol-last': 'error',
+    'func-call-spacing': ['error', 'never'],
+    'func-names': ['error', 'never'],
+    'jsx-quotes': 'error',
+    'key-spacing': ['error', {
+      beforeColon: false,
+      afterColon: true
+    }],
+    'keyword-spacing': 'error',
+    'linebreak-style': ['error', 'unix'],
+    'max-depth': 'warn',
+    'max-nested-callbacks': ['warn', 4],
+    'max-params': ['warn', {
+      max: 4
+    }],
+    'max-statements-per-line': 'error',
+    'new-cap': ['error', {
+      newIsCap: true,
+      capIsNew: true
+    }],
+    'new-parens': 'error',
+    'no-array-constructor': 'error',
+    'no-lonely-if': 'error',
+    'no-mixed-operators': 'error',
+    'no-mixed-spaces-and-tabs': 'error',
+    'no-multiple-empty-lines': ['error', {
+      max: 1
+    }],
+    'no-nested-ternary': 'warn',
+    'no-negated-condition': 'error',
+    'no-new-object': 'error',
+    'no-restricted-syntax': ['error', 'WithStatement'],
+    'no-whitespace-before-property': 'error',
+    'no-trailing-spaces': 'error',
+    'no-unneeded-ternary': 'error',
+    'object-curly-spacing': ['error', 'never'],
+    'one-var': ['error', 'never'],
+    'one-var-declaration-per-line': 'error',
+    'operator-assignment': ['error', 'always'],
+    'operator-linebreak': ['error', 'after'],
+    'padded-blocks': ['error', 'never'],
+    'quote-props': ['error', 'consistent-as-needed'],
+    'quotes': ['error', 'single', {
+      allowTemplateLiterals: true
+    }],
+    'semi-spacing': ['error', {
+      before: false,
+      after: true
+    }],
+    'semi': ['error', 'always'],
+    'space-before-blocks': ['error', 'always'],
+    'space-in-parens': ['error', 'never'],
+    'space-infix-ops': 'error',
+    'space-unary-ops': 'error',
+    'spaced-comment': ['error', 'always', {
+      line: {
+        exceptions: ['-']
+      },
+      block: {
+        markers: ['!'],
+        balanced: true
+      }
+    }],
+    'unicode-bom': ['error', 'never'],
+    'arrow-parens': ['error', 'as-needed'],
+    'arrow-spacing': ['error', {
+      before: true,
+      after: true
+    }],
+    'constructor-super': 'error',
+    'generator-star-spacing': ['error', 'both'],
+    'no-class-assign': 'error',
+    'no-const-assign': 'error',
+    'no-dupe-class-members': 'error',
+    'no-duplicate-imports': ['error', {
+      includeExports: true
+    }],
+    'no-new-symbol': 'error',
+    'no-this-before-super': 'error',
+    'no-useless-computed-key': 'error',
+    'no-useless-constructor': 'error',
+    'no-useless-rename': 'error',
+    'require-yield': 'error',
+    'rest-spread-spacing': ['error', 'never'],
+    'symbol-description': 'error',
+    'template-curly-spacing': 'error',
+    'yield-star-spacing': ['error', 'both'],
+    'indent': [2, 2, {
+      SwitchCase: 1
+    }],
+    'space-before-function-paren': [2, 'never'],
+    'valid-jsdoc': [2, {
+      requireReturn: false,
+      prefer: {
+        returns: 'return'
+      }
+    }],
+    'require-jsdoc': 1,
+    'max-len': [1, 80, 4, {
+      ignoreComments: true,
+      ignoreUrls: true
+    }],
+    'camelcase': ['error', {
+      properties: 'never'
+    }],
     'promise/param-names': 'error',
-
-    // Ensure that inside a then() you make sure to return a new promise or value.
     'promise/always-return': 'error',
-
-    // Ensure that each time a then() is applied to a promise, a catch() is applied
-    // as well. Exceptions are made if you are returning that promise.
     'promise/catch-or-return': 'error',
-
-    // mocha rules
-    // disallow exclusive mocha tests
     'mocha/no-exclusive-tests': 'error',
-
-    // disallow skipped mocha tests (fixable)
     'mocha/no-skipped-tests': 'error',
-
-    // disallow pending/unimplemented mocha tests
     'mocha/no-pending-tests': 'error',
-
-    // enforces handling of callbacks for async tests
     'mocha/handle-done-callback': 'error',
-
-    // disallow synchronous tests
     'mocha/no-synchronous-tests': 'error',
-
-    // disallow global tests
     'mocha/no-global-tests': 'error',
-
-    // disallow returning in a test or hook function that uses a callback
     'mocha/no-return-and-callback': 'error',
-
-    // disallow duplicate uses of a hook at the same level inside a describe
     'mocha/no-sibling-hooks': 'error',
-
-    // disallow arrow functions as arguments to mocha globals
     'mocha/no-mocha-arrows': 'error',
-
-    // disallow hooks for a single test or test suite
     'mocha/no-hooks-for-single-case': 'error',
-
-    // disallow top-level hooks
     'mocha/no-top-level-hooks': 'error',
-
-    // disallow identical titles
     'mocha/no-identical-title': 'error',
-
-    // airbnb ES6 rules
-    // enforces no braces where they can be omitted
-    // http://eslint.org/docs/rules/arrow-body-style
     'arrow-body-style': ['error', 'as-needed'],
-
-    // disallow arrow functions where they could be confused with comparisons
-    // http://eslint.org/docs/rules/no-confusing-arrow
     'no-confusing-arrow': ['error', {
       allowParens: true
     }],
-
-    // require let or const instead of var
     'no-var': 'error',
-
-    // require method and property shorthand syntax for object literals
-    // http://eslint.org/docs/rules/object-shorthand
     'object-shorthand': ['error', 'always', {
       ignoreConstructors: false,
       avoidQuotes: true
     }],
-
-    // suggest using arrow functions as callbacks
     'prefer-arrow-callback': ['error', {
       allowNamedFunctions: false,
       allowUnboundThis: true
     }],
-
-    // suggest using of const declaration for variables that are never modified after declared
     'prefer-const': ['error', {
       destructuring: 'any',
       ignoreReadBeforeAssign: true
     }],
-
-    // suggest using Reflect methods where applicable
-    // http://eslint.org/docs/rules/prefer-reflect
     'prefer-reflect': 'warn',
-
-    // use rest parameters instead of arguments
-    // http://eslint.org/docs/rules/prefer-rest-params
     'prefer-rest-params': 'error',
-
-    // suggest using the spread operator instead of .apply()
-    // http://eslint.org/docs/rules/prefer-spread
     'prefer-spread': 'error',
-
-    // suggest using template literals instead of string concatenation
-    // http://eslint.org/docs/rules/prefer-template
     'prefer-template': 'error',
-
-    // import sorting
-    // http://eslint.org/docs/rules/sort-imports
     'sort-imports': ['off', {
       ignoreCase: false,
       ignoreMemberSort: false,
       memberSyntaxSortOrder: ['none', 'all', 'multiple', 'single']
     }]
   }
+
 };

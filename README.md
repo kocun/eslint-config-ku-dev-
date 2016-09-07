@@ -1,4 +1,4 @@
-A fork of the ESLint [shareable config](http://eslint.org/docs/developer-guide/shareable-configs.html) for the [Google style](http://google.github.io/styleguide/javascriptguide.xml) with extra ES6, Promise, and Mocha rules for use with Koc University projects.
+An ESLint [shareable config](http://eslint.org/docs/developer-guide/shareable-configs.html) based off of the [Google style](http://google.github.io/styleguide/javascriptguide.xml) with extra ES6, Promise, and Mocha rules for use with Koc University projects.
 
 ## Install
 
