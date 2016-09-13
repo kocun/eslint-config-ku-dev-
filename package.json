@@ -1,6 +1,6 @@
 {
   "name": "eslint-config-ku-dev",
-  "version": "0.1.0",
+  "version": "0.2.1",
   "description": "ESLint shareable config for the Koc University style",
   "license": "MIT",
   "author": "Koc University",
@@ -26,5 +26,9 @@
   },
   "peerDependencies": {
     "eslint": "^3.4.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kocun/eslint-config-ku-dev-.git"
   }
 }
