@@ -17,7 +17,7 @@ Add some ESLint config to your `package.json`:
 	},
 	"devDependencies": {
 		"eslint": "^3.4.0",
-		"eslint-config-ku-dev": "^0.2.1"
+		"eslint-config-ku-dev": "^0.3.1"
 	},
 	"eslintConfig": {
 		"extends": "ku-dev"

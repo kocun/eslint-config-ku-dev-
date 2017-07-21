@@ -240,7 +240,11 @@ module.exports = {
     'indent': [2, 2, {
       SwitchCase: 1
     }],
-    'space-before-function-paren': [2, 'never'],
+    'space-before-function-paren': [2, {
+      asyncArrow: 'always',
+      anonymous: 'never',
+      named: 'never'
+    }],
     'valid-jsdoc': [2, {
       requireReturn: false,
       prefer: {
@@ -250,7 +254,9 @@ module.exports = {
     'require-jsdoc': 1,
     'max-len': [1, 80, 4, {
       ignoreComments: true,
-      ignoreUrls: true
+      ignoreUrls: true,
+      ignoreTemplateLiterals: true,
+      ignoreRegExpLiterals: true
     }],
     'camelcase': ['error', {
       properties: 'never'
