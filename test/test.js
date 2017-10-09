@@ -1,5 +1,5 @@
 /**
- * Copyright 2015 Google Inc. All rights reserved.
+ * Copyright 2016 Google Inc. All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,27 +13,32 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import test from 'ava';
-import isPlainObj from 'is-plain-obj';
-import tempWrite from 'temp-write';
-import eslint from 'eslint';
-import conf from '../';
 
-function runEslint(str, conf) {
-  const linter = new eslint.CLIEngine({
-    useEslintrc: false,
-    configFile: tempWrite.sync(JSON.stringify(conf))
-  });
-  return linter.executeOnText(str).results[0].messages;
-}
+'use strict';
 
-test(t => {
-  t.true(isPlainObj(conf));
-  t.true(isPlainObj(conf.rules));
+const assert = require('assert');
+const eslint = require('eslint');
+const conf = require('../');
 
-  const errors = runEslint(`'use strict'\nvar foo = function () {};\nfoo();\n`, conf);
+// The source files to lint.
+const repoFiles = [
+  'index.js',
+  'test/test.js'
+];
 
-  t.is(errors[0].ruleId, 'semi');
-  t.is(errors[1].ruleId, 'no-var');
-  t.is(errors[2].ruleId, 'space-before-function-paren');
+// Use the rules defined in this repo to test against.
+const eslintOpts = {
+  useEslintrc: false,
+  envs: ['node', 'es6'],
+  parserOptions: {ecmaVersion: 2018},
+  plugins: ['promise', 'mocha'],
+  rules: conf.rules
+};
+
+// Runs the linter on the repo files and asserts no errors were found.
+const report = new eslint.CLIEngine(eslintOpts).executeOnFiles(repoFiles);
+assert.equal(report.errorCount, 0);
+assert.equal(report.warningCount, 0);
+repoFiles.forEach((file, index) => {
+  assert(report.results[index].filePath.endsWith(file));
 });
